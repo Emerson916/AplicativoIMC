@@ -7,6 +7,17 @@
     tools:context=".ui.NovoUsuarioActivity">
 
     <EditText
+        android:id="@+id/et_altura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Altura"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/et_data_nascimento"
+        app:layout_constraintTop_toBottomOf="@+id/et_data_nascimento" />
+
+    <EditText
         android:id="@+id/et_nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,9 +71,9 @@
         android:layout_height="wrap_content"
         android:text="Gravar"
         app:layout_constraintEnd_toEndOf="@+id/et_data_nascimento"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_data_nascimento"
-        app:layout_constraintTop_toBottomOf="@+id/et_data_nascimento" />
+        app:layout_constraintTop_toBottomOf="@+id/et_altura" />
 
     <EditText
         android:id="@+id/et_email"

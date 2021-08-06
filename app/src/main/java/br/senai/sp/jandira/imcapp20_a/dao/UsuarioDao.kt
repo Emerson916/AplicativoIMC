@@ -8,7 +8,7 @@ class UsuarioDao(val context: Context, val usuario: Usuario) {
 
     val dbHelper = ImcDataBase.getDatabase(context)
 
-    private fun gravar() {
+    public fun gravar() {
 
         // *** obter uma instância do banco para escrita
         val db = dbHelper.writableDatabase

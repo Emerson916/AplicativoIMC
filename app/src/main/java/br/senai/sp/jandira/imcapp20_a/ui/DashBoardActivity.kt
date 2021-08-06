@@ -37,7 +37,7 @@ class DashBoardActivity : AppCompatActivity() {
         tv_age.text = dados.getInt("idade", 0).toString()
 
         // *** Colocar foto do Github no ImageView
-        val url = "https://avatars.githubusercontent.com/u/14265058?v=4"
+        val url = "https://avatars.githubusercontent.com/u/77053593?v=4"
         Glide.with(this).load(url).into(iv_profile)
 
     }
