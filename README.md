@@ -1,4 +1,4 @@
-# 📱 AppIMC2
+# 📱 Aplicativo IMC
 
 ## Objetivo do Aplicativo
 
