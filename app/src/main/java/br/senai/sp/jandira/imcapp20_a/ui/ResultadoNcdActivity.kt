@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import br.senai.sp.jandira.imcapp20_a.R
-import br.senai.sp.jandira.imcapp20_a.getDicaDoDiaNcd
+import br.senai.sp.jandira.imcapp20_a.utils.getDicaDoDiaNcd
 
 class ResultadoNcdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +17,8 @@ class ResultadoNcdActivity : AppCompatActivity() {
         val ncd = intent.getDoubleExtra("ncd", 0.0)
 
         textViewNcd.text = ncd.toInt().toString()
-        textViewDica.text = getDicaDoDiaNcd()
+        textViewDica.text =
+            getDicaDoDiaNcd()
 
     }
 }

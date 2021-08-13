@@ -7,6 +7,7 @@ import android.os.Bundle
 import br.senai.sp.jandira.imcapp20_a.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_dash_board.*
+import kotlinx.android.synthetic.main.activity_login.*
 
 class DashBoardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +26,6 @@ class DashBoardActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 
     private fun preencherDashBoard() {
@@ -34,7 +34,9 @@ class DashBoardActivity : AppCompatActivity() {
         tv_profile_name.text = dados.getString("nome", "")
         tv_profile_occupation.text = dados.getString("profissao", "")
         tv_weight.text = dados.getInt("peso", 0).toString()
-        tv_age.text = dados.getInt("idade", 0).toString()
+        tv_age.text = dados.getString("idade", "")
+
+
 
         // *** Colocar foto do Github no ImageView
         val url = "https://avatars.githubusercontent.com/u/77053593?v=4"

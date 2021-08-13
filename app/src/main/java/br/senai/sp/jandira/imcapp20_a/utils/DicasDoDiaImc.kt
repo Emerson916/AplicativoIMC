@@ -1,4 +1,4 @@
-package br.senai.sp.jandira.imcapp20_a
+package br.senai.sp.jandira.imcapp20_a.utils
 
 import android.util.Log
 import java.util.*

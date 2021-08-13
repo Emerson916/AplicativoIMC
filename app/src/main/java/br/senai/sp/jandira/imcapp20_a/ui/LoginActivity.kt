@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import br.senai.sp.jandira.imcapp20_a.R
+import br.senai.sp.jandira.imcapp20_a.dao.UsuarioDao
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -59,22 +60,30 @@ class LoginActivity : AppCompatActivity() {
         val user = editUser.text.toString()
         val pass = editPassword.text.toString()
 
-        val dados = getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)
+        val dao = UsuarioDao(this, null)
 
-        val userPreferences = dados.getString("email", "Não encontrado")
-        val passPreferences = dados.getString("senha", "Não encontrado")
+        val autenticar = dao.autenticar(user, pass)
 
-        if (user == userPreferences && pass == passPreferences){
-
-            // Gravar o lembrar no sharedPreferences
-            val editor = dados.edit()
-            editor.putBoolean("lembrar", check_lembrar.isChecked)
-            editor.apply()
-
+        if (autenticar){
             abrirDashBoard()
-
-        } else {
-            tvMensagemErro.text = "Usuário ou senha incorretos!"
         }
+
+//        val dados = getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)
+//
+//        val userPreferences = dados.getString("email", "Não encontrado")
+//        val passPreferences = dados.getString("senha", "Não encontrado")
+
+//        if (user == userPreferences && pass == passPreferences){
+//
+//            // Gravar o lembrar no sharedPreferences
+//            val editor = dados.edit()
+//            editor.putBoolean("lembrar", check_lembrar.isChecked)
+//            editor.apply()
+//
+//            abrirDashBoard()
+//
+//        } else {
+//            tvMensagemErro.text = "Usuário ou senha incorretos!"
+//        }
     }
 }

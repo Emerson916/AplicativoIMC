@@ -1,4 +1,4 @@
-package br.senai.sp.jandira.imcapp20_a
+package br.senai.sp.jandira.imcapp20_a.utils
 
 fun calcularNcd(peso: Double, faixaEtaria: Int, nivelAtividade: Int, sexo: Char): Double {
 

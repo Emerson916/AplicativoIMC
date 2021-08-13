@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.cardview.widget.CardView
-import br.senai.sp.jandira.imcapp20_a.NcdActivity
 import br.senai.sp.jandira.imcapp20_a.R
 
 class MainActivity : AppCompatActivity() {

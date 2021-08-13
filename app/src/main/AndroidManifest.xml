@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.ResultadoNcdActivity" />
-        <activity android:name=".NcdActivity" />
+        <activity android:name=".ui.NcdActivity" />
         <activity android:name=".ui.ResultadoImcActivity" />
         <activity android:name=".ui.ImcActivity" />
         <activity android:name=".ui.MainActivity" />

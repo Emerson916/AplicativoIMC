@@ -1,10 +1,11 @@
-package br.senai.sp.jandira.imcapp20_a
+package br.senai.sp.jandira.imcapp20_a.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
-import br.senai.sp.jandira.imcapp20_a.ui.ResultadoNcdActivity
+import br.senai.sp.jandira.imcapp20_a.R
+import br.senai.sp.jandira.imcapp20_a.utils.calcularNcd
 
 class NcdActivity : AppCompatActivity() {
 
@@ -86,7 +87,12 @@ class NcdActivity : AppCompatActivity() {
         var peso: Double = 0.0
         peso = edPeso.text.toString().toDouble()
 
-        val ncd = calcularNcd(peso, faixaEtaria, nivelAtividade, sexo)
+        val ncd = calcularNcd(
+            peso,
+            faixaEtaria,
+            nivelAtividade,
+            sexo
+        )
         val intent = Intent(this, ResultadoNcdActivity::class.java)
         intent.putExtra("ncd", ncd)
         startActivity(intent)
