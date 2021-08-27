@@ -2,8 +2,13 @@ package br.senai.sp.jandira.imcapp20_a.ui
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import br.senai.sp.jandira.imcapp20_a.R
 import br.senai.sp.jandira.imcapp20_a.dao.UsuarioDao
@@ -11,10 +16,21 @@ import br.senai.sp.jandira.imcapp20_a.model.Usuario
 import kotlinx.android.synthetic.main.activity_novo_usuario.*
 import java.util.*
 
+const val CODE_IMAGE = 100
+
 class NovoUsuarioActivity : AppCompatActivity() {
+
+    var imageBitmap: Bitmap? = null
+    lateinit var imgProfile: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_novo_usuario)
+
+        // Detectar o click no texto "trocar foto"
+        tv_trocar_foto.setOnClickListener{
+            abrirGaleria()
+        }
 
         //Criando um calendário
         val calendario = Calendar.getInstance()
@@ -64,7 +80,7 @@ class NovoUsuarioActivity : AppCompatActivity() {
             et_altura.text.toString().toDouble(),
             et_data_nascimento.toString(),
             'M',
-            null)
+            imageBitmap)
 
             val dao = UsuarioDao(this, usuario)
             dao.gravar()
@@ -76,4 +92,35 @@ class NovoUsuarioActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun abrirGaleria() {
+        // Chamando a galeria de imagens
+
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+
+        //Definir qual o tipo de conteúdo que deverá ser obtido
+        intent.type = "image/*"
+
+        //Iniciar a Activity, mas neste caso nós queremos que
+        // está Activity retorne alfo pra gente, a imagem
+
+        startActivityForResult(Intent.createChooser(intent, "Escolha uma foto"), CODE_IMAGE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+       if (requestCode == CODE_IMAGE && requestCode == -1){
+
+           //Recuperando o resultado em um BitMap
+           val stream = contentResolver.openInputStream(data!!.data!!)
+
+           // Transformando o resultado em um Bitmap
+           imageBitmap = BitmapFactory.decodeStream(stream)
+
+           //Colocar a imagem no ImageView
+           imgProfile.setImageBitmap(imageBitmap)
+       }
+    }
 }
+

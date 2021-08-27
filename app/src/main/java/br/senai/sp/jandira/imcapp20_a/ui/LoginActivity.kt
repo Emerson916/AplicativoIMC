@@ -63,10 +63,12 @@ class LoginActivity : AppCompatActivity() {
 
         val dao = UsuarioDao(this, null)
 
-        val autenticar = dao.autenticar(user, pass)
+        val autenticado = dao.autenticar(user,pass)
 
-        if (autenticar){
+        if (autenticado == true){
             abrirDashBoard()
+        }else{
+            tvMensagemErro.text = "Usuário ou senha incorretos!"
         }
 
 //        val dados = getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)

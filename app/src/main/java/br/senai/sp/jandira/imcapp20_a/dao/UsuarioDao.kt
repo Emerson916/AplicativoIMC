@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.util.Log
 import br.senai.sp.jandira.imcapp20_a.model.Usuario
+import br.senai.sp.jandira.imcapp20_a.utils.converterBitmapParaByteArray
 import br.senai.sp.jandira.imcapp20_a.utils.obterDiferencaEntreDatasEmAnos
 import java.time.LocalDate
 import java.time.Period
@@ -26,6 +27,7 @@ class UsuarioDao(val context: Context, val usuario: Usuario?) {
         dados.put("altura", usuario.altura)
         dados.put("data_nascimento", usuario.dataNascimento.toString())
         dados.put("sexo", usuario.sexo.toString())
+        dados.put("foto", converterBitmapParaByteArray(usuario.foto))
 
         // *** Executar o comando de gravação
         db.insert("tb_usuario", null, dados)
@@ -41,7 +43,13 @@ class UsuarioDao(val context: Context, val usuario: Usuario?) {
         // *** Determinar quais colunas da tabela
         // *** que nós queremos no resultado
         // *** vamos criar uma projeção
-        val campos = arrayOf("email", "senha", "nome", "profissao", "data_nascimento")
+        val campos = arrayOf(
+            "email",
+            "senha",
+            "nome",
+            "profissao",
+            "data_nascimento",
+            "foto")
 
         // *** Defininr o filtro da consulta
         // *** Construindo o filtro
@@ -63,39 +71,41 @@ class UsuarioDao(val context: Context, val usuario: Usuario?) {
             null
         )
 
-        Log.i("XPTO", "Linhas ${cursor.count.toString()}")
+//        Log.i("XPTO", "Linhas ${cursor.count.toString()}")
 
         // *** Guardando a quantidade de linhas obtida na consulta
         val linhas = cursor.count
 
-        var autenticar = false
+        var autenticado = false
 
         if (linhas > 0 ){
-            val autenticar = true
+            autenticado = true
             cursor.moveToFirst()
-
 
             val emailIndex = cursor.getColumnIndex("email")
             val nomeIndex = cursor.getColumnIndex("nome")
             val profissaoIndex = cursor.getColumnIndex("profissao")
-            val dataNascimetoIndex = cursor.getColumnIndex("dataNascimento")
+            val dataNascimentoIndex = cursor.getColumnIndex("dataNascimento")
+            val fotoIndex = cursor.getColumnIndex("foto")
 
-            val dataNascimento = cursor.getString(dataNascimetoIndex)
+            val dataNascimento = cursor.getString(dataNascimentoIndex)
 
             // *** Criação/atualização do sharedPreferences
             val dados = context.getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)
             val editor = dados.edit()
             editor.putString("nome", cursor.getString(nomeIndex))
-            editor.putString("email", cursor.getString(emailIndex))
             editor.putString("profissao", cursor.getString(profissaoIndex))
             editor.putString("idade", obterDiferencaEntreDatasEmAnos(dataNascimento))
+            editor.putString("email", cursor.getString(emailIndex))
             editor.putInt("peso", 0)
+            //adicionar a foto aqui com um putString
+            //editor.putString("foto", cursor.getBlob)
             editor.apply()
 
         }
 
         db.close()
-        return autenticar
+        return autenticado
 
     }
 
