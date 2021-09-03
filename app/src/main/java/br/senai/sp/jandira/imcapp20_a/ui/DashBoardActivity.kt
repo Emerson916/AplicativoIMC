@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.senai.sp.jandira.imcapp20_a.R
+import br.senai.sp.jandira.imcapp20_a.utils.converterBase64ParaBitMap
+import br.senai.sp.jandira.imcapp20_a.utils.converterBitMapParaBase64
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_dash_board.*
 import kotlinx.android.synthetic.main.activity_login.*
@@ -36,11 +38,16 @@ class DashBoardActivity : AppCompatActivity() {
         tv_weight.text = dados.getInt("peso", 0).toString()
         tv_age.text = dados.getString("idade", "")
 
+        val imageBase64 = dados.getString("foto", "")
+        val imageBitmap = converterBase64ParaBitMap(imageBase64)
 
+        iv_profile.setImageBitmap(imageBitmap)
 
         // *** Colocar foto do Github no ImageView
-        val url = "https://avatars.githubusercontent.com/u/77053593?v=4"
-        Glide.with(this).load(url).into(iv_profile)
+//        val url = "https://avatars.githubusercontent.com/u/77053593?v=4"
+//        Glide.with(this).load(url).into(iv_profile)
+
+
 
     }
 }

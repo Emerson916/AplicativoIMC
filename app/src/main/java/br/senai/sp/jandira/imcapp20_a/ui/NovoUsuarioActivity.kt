@@ -21,7 +21,7 @@ const val CODE_IMAGE = 100
 class NovoUsuarioActivity : AppCompatActivity() {
 
     var imageBitmap: Bitmap? = null
-    lateinit var imgProfile: ImageView
+//    lateinit var imgProfile: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +78,7 @@ class NovoUsuarioActivity : AppCompatActivity() {
             et_nome.text.toString(),
             et_profissao.text.toString(),
             et_altura.text.toString().toDouble(),
-            et_data_nascimento.toString(),
+            et_data_nascimento.text.toString(),
             'M',
             imageBitmap)
 
@@ -110,7 +110,7 @@ class NovoUsuarioActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-       if (requestCode == CODE_IMAGE && requestCode == -1){
+       if (requestCode == CODE_IMAGE && resultCode == -1){
 
            //Recuperando o resultado em um BitMap
            val stream = contentResolver.openInputStream(data!!.data!!)
@@ -119,7 +119,7 @@ class NovoUsuarioActivity : AppCompatActivity() {
            imageBitmap = BitmapFactory.decodeStream(stream)
 
            //Colocar a imagem no ImageView
-           imgProfile.setImageBitmap(imageBitmap)
+           img_profile.setImageBitmap(imageBitmap)
        }
     }
 }
