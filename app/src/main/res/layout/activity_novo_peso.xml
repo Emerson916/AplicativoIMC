@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        tools:context=".ui.ImcActivity">
+
+        <Button
+            android:id="@+id/button_voltar"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:text="Voltar"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="70dp"
+            android:layout_marginStart="10dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/peso_imc"
+            android:layout_gravity="center"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/complementar_dados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complementar dados"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginBottom="48dp"
+            android:layout_gravity="center"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="48dp"
+            android:layout_marginBottom="-48dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="32dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Peso:"
+                    android:textAppearance="@style/label_dark_background"/>
+
+                <EditText
+                    android:id="@+id/ed_novo_peso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Qual o seu peso?"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="16dp"
+                    android:layout_marginTop="4dp"
+                    android:inputType="number"/>
+
+                <TextView
+                    android:id="@+id/text_view_novas_atividades"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Qual o nível de atividades diárias?"
+                    android:textAppearance="@style/label_dark_background"
+                    android:layout_marginTop="16dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_novas_atividades"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/atividades"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="16dp"/>
+
+                <Button
+                    android:id="@+id/button_inserir_dados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Inserir dados"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginBottom="48dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button_background"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
