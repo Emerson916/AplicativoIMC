@@ -13,18 +13,19 @@
         android:layout_height="match_parent"
         android:gravity="bottom"
         android:orientation="vertical"
-        tools:context=".ui.ImcActivity">
+        tools:context=".ui.NovoPesoActivity">
 
-        <Button
-            android:id="@+id/button_voltar"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:background="@drawable/button_background"
-            android:text="Voltar"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="70dp"
-            android:layout_marginStart="10dp"
-            />
+        <TextView
+            android:id="@+id/tv_sair"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="40dp"
+            android:text="Sair"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:layout_width="wrap_content"

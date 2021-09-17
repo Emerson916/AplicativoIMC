@@ -27,13 +27,16 @@ class DashBoardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash_board)
 
+        // Se o peso for 0, abre o dialogAviso
         preencherDashBoard()
         val dados = getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)
 
         val peso = dados.getInt("peso", 0)
 
-        if (peso == 0)
+        if (peso == 0){
             dialogAviso()
+        }
+
 
         tv_logout.setOnClickListener {
             val dados = getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)
