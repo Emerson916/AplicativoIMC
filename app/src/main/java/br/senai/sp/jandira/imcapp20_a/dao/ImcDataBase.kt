@@ -52,7 +52,7 @@ class ImcDataBase(context: Context) :
                 "peso REAL NOT NULL," +
                 "nivel_atividade INTEGER NOT NULL," +
                 "data_pesagem TEXT NOT NULL," +
-                "id_usario INTEGER NOT NULL)"
+                "id_usuario INTEGER NOT NULL)"
 
         db.execSQL(criarTabelaBiometria)
 

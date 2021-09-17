@@ -9,3 +9,5 @@ data class Biometria (
     var dataPesagem: LocalDate = LocalDate.now(),
     var usuario: Usuario
 )
+
+
