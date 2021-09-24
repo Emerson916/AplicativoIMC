@@ -27,6 +27,9 @@ class DashBoardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash_board)
 
+        // Removendo a appBar
+        getSupportActionBar()!!.hide()
+
         // Se o peso for 0, abre o dialogAviso
         preencherDashBoard()
         val dados = getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)

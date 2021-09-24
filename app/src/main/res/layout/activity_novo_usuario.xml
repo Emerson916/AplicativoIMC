@@ -13,7 +13,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/header_background"
+        android:layout_marginBottom="32dp"
+        >
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_profile"
@@ -27,7 +30,6 @@
                 android:id="@+id/img_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
 
                 android:scaleType="centerCrop"
                 android:src="@drawable/perfil" />
@@ -40,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Trocar foto"
-            android:textColor="@color/colorAccent"
+            android:textColor="#fff"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -173,21 +175,6 @@
         android:hint="Peso"
         android:inputType="textPersonName"
         />
-
-
-
-
-
-    <Button
-        android:id="@+id/bt_gravar"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:layout_gravity="center"
-        android:text="Gravar"
-        />
-
-
 
 
 </LinearLayout>

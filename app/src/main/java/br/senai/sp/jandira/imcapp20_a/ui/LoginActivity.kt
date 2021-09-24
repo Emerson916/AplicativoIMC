@@ -23,6 +23,12 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        // Removendo a appBar
+
+        getSupportActionBar()!!.hide()
+
+
         
         val dados = getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)
         val lembrar = dados.getBoolean("lembrar", false)

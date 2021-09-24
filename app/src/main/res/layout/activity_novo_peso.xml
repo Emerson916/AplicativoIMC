@@ -15,17 +15,7 @@
         android:orientation="vertical"
         tools:context=".ui.NovoPesoActivity">
 
-        <TextView
-            android:id="@+id/tv_sair"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="40dp"
-            android:text="Sair"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -71,6 +61,22 @@
                     android:padding="16dp"
                     android:layout_marginTop="4dp"
                     android:inputType="number"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Digite a data da pesagem:"
+                    android:textAppearance="@style/label_dark_background"/>
+
+                <EditText
+                    android:id="@+id/et_data_pesagem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+
+
+                    android:background="@drawable/edit_text_background"
+                    />
 
                 <TextView
                     android:id="@+id/text_view_novas_atividades"

@@ -8,6 +8,8 @@ import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
 import br.senai.sp.jandira.imcapp20_a.R
@@ -26,6 +28,13 @@ class NovoUsuarioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_novo_usuario)
+
+        supportActionBar!!.title = "Novo Usuário"
+        supportActionBar!!.subtitle = "Cadastre o seus dados"
+        supportActionBar!!.setBackgroundDrawable(
+            getDrawable(R.drawable.background_toobar))
+
+        supportActionBar!!.elevation = 0.0f
 
         // Detectar o click no texto "trocar foto"
         tv_trocar_foto.setOnClickListener{
@@ -56,8 +65,8 @@ class NovoUsuarioActivity : AppCompatActivity() {
             dpd.show()
         }
 
-        bt_gravar.setOnClickListener {
-            // *** Criar o sharedPreferences
+//        bt_gravar.setOnClickListener {
+//            // *** Criar o sharedPreferences
 //            val dados = getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)
 //
 //            val editor = dados.edit()
@@ -68,10 +77,18 @@ class NovoUsuarioActivity : AppCompatActivity() {
 //            editor.putString("email", et_email.text.toString())
 //            editor.putString("senha", et_senha.text.toString())
 //            editor.apply()
+//
+//
+//
+//
+//
+//        }
 
-            /** Gravar um novo usuario no Banco de Dados**/
+    }
 
-            val usuario = Usuario(
+    /** Gravar um novo usuario no Banco de Dados**/
+    private fun salvar() {
+        val usuario = Usuario(
             0,
             et_email.text.toString(),
             et_senha.text.toString(),
@@ -82,16 +99,43 @@ class NovoUsuarioActivity : AppCompatActivity() {
             'M',
             imageBitmap)
 
-            val dao = UsuarioDao(this, usuario)
-            dao.gravar()
+        val dao = UsuarioDao(this, usuario)
+        dao.gravar()
 
-            Toast.makeText(this, "Dados gravados com sucesso!!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Dados gravados com sucesso!!", Toast.LENGTH_SHORT).show()
 
-            finish()
+        finish()
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_novo_usuario, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.menu_save -> {
+                salvar()
+                return true
+            }
+
+            R.id.menu_cancel -> {
+                Toast.makeText(this, "Cancelar", Toast.LENGTH_SHORT).show()
+
+            }
+
+            R.id.menu_help -> {
+                Toast.makeText(this, "Precisa de ajuda ?", Toast.LENGTH_SHORT).show()
+
+            }
         }
 
+
+        return super.onOptionsItemSelected(item)
     }
+
 
     private fun abrirGaleria() {
         // Chamando a galeria de imagens
