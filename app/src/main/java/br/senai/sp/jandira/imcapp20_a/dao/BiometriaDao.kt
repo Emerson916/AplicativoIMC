@@ -31,19 +31,18 @@ class BiometriaDao(val context: Context, val biometria: Biometria?) {
         db.close()
     }
 
+
     public fun autenticar(peso:String, nivel_atividade:String):Boolean{
 
-        // *** obter uma instância de leitura do banco
+        val dados = context.getSharedPreferences("dados_usuario", Context.MODE_PRIVATE)
         val db = dbHelper.readableDatabase
 
-        // *** Determinar quais colunas da tabela
-        // *** que nós queremos no resultado
-        // *** vamos criar uma projeção
         val campos = arrayOf(
             "peso",
-            "nivel_atividade",
-            "data_pesagem",
-            "id_usuario")
+            "nivel_atividade"
+        )
+
+        val idUsuario = dados.getInt("id", 0)
 
         // *** Defininr o filtro da consulta
         // *** Construindo o filtro
@@ -82,8 +81,6 @@ class BiometriaDao(val context: Context, val biometria: Biometria?) {
             val idUsuarioIndex = cursor.getColumnIndex("id_usuario")
 
 
-
-
             // *** Criação/atualização do sharedPreferences
             val dados = context.getSharedPreferences("dados_biometria", Context.MODE_PRIVATE)
             val editor = dados.edit()
@@ -98,7 +95,5 @@ class BiometriaDao(val context: Context, val biometria: Biometria?) {
 
         db.close()
         return autenticado
-
-
     }
-    }
+}

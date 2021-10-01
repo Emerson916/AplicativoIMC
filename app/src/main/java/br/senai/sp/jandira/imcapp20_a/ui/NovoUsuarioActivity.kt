@@ -77,13 +77,7 @@ class NovoUsuarioActivity : AppCompatActivity() {
 //            editor.putString("email", et_email.text.toString())
 //            editor.putString("senha", et_senha.text.toString())
 //            editor.apply()
-//
-//
-//
-//
-//
 //        }
-
     }
 
     /** Gravar um novo usuario no Banco de Dados**/
